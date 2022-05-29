@@ -116,6 +116,7 @@ install_local_tool_versions() {
         some_tools_installed='yes'
         plugin_versions=$(cut -d '|' -f 1 <<<"$plugin_version_and_path")
         for plugin_version in $plugin_versions; do
+          plugin_version="$(echo -e "${plugin_versions}" | tr -d '[:space:]')"
           install_tool_version "$plugin_name" "$plugin_version"
         done
       fi
